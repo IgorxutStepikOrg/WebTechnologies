@@ -6,4 +6,4 @@
  ``` git clone https://github.com/IgorxutStepikOrg/WebTechnologies.git /home/box/web ```
  3. Ввести команду:
 
- ``` bash /home/box/web/Module1_8/Step12/init.sh ```
+ ``` bash /home/box/web/Module1_9/Step11/init.sh ```
