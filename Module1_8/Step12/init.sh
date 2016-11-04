@@ -1,7 +1,5 @@
 mkdir -p {~/home/box/web/public/{img,css,js},~/home/box/web/{uploads,etc}}
+cp /home/box/web/Module1_8/Step12/nginx.conf /home/box/web/etc/nginx.conf
 
-sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
-sudo ln -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/test
-sudo /etc/init.d/gunicorn restart
-sudo /etc/init.d/mysql start
