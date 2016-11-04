@@ -1,5 +1,5 @@
-mkdir -p {~/web/public/{img,css,js},~/web/{uploads,etc}}
-cp ~/web/Module1_8/Step12/nginx.conf ~/web/etc/nginx.conf
+mkdir -p {/home/box/web/public/{img,css,js},/home/box/web/{uploads,etc}}
+cp /home/box/web/Module1_8/Step12/nginx.conf /home/box/web/etc/nginx.conf
 
-sudo ln -sf ~/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
+sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
