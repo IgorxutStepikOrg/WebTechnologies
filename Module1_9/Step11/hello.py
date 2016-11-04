@@ -2,11 +2,8 @@
 
 def app(environ, start_response):
 
-    data = ""
+    data = list(map(lambda x: x + "\n", environ["QUERY_STRING"].split("&")))
 
-    for line in environ["QUERY_STRING"].split("&"):
-        data = data + line + "\n"
+    start_response("200 OK", [("Content-Type", "text/plain"),])
 
-    start_response("200 OK", [("Content-Type", "text/plain"), ("Content-Length", str(len(data)))])
-
-    return [data]
+    return data
