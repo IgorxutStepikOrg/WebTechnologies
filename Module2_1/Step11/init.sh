@@ -1,7 +1,10 @@
 #!/bin/bash
 
-sudo pip3 install django 1.10.3
-sudo pip3 install gunicorn 19.6.0
+sudo apt-get -y update
+sudo apt-get -y upgrade
+
+sudo pip3 install django
+sudo pip3 install gunicorn
 
 sed 's/python/python3/' /usr/sbin/gunicorn-debian
 sed 's/17.5/19.6.0/g' /usr/bin/gunicorn
