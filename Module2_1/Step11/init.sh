@@ -1,8 +1,19 @@
 #!/bin/bash
 
+sudo pip uninstall django
+sudo pip3 install django
+
 mkdir -p /home/box/web
-cp /home/box/web/Module1_9/Step11/hello.py /home/box/web/hello.py
-cp /home/box/web/Module1_9/Step11/gunicorn.conf /home/box/web/etc/gunicorn.conf
+
+cd /home/box/web
+django-admin startproject ask
+
+cd /home/box/web/ask
+python manage.py startapp qa
+
+cp /home/box/web/Module2_1/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
+cp /home/box/web/Module2_1/Step11/ask/qa/urls.py /home/box/web/ask/qa/urls.py
+cp /home/box/web/Module2_1/Step11/ask/ask/urls.py /home/box/web/ask/ask/urls.py
 
 sudo ln -sf /home/box/web/Module2_1/Step11/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
