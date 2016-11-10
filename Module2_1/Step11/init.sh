@@ -1,7 +1,12 @@
 #!/bin/bash
 
-sudo pip uninstall django
-sudo pip3 install django
+sudo pip3 install django 1.10.3
+sudo pip3 install gunicorn 19.6.0
+
+sed 's/python/python3/' /usr/sbin/gunicorn-debian
+sed 's/17.5/19.6.0/g' /usr/bin/gunicorn
+sed 's/17.5/19.6.0/g' /usr/bin/gunicorn_django
+sed 's/17.5/19.6.0/g' /usr/bin/gunicorn_paster
 
 mkdir -p /home/box/web
 
