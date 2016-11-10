@@ -6,10 +6,13 @@ sudo apt-get -y upgrade
 sudo pip3 install django
 sudo pip3 install gunicorn
 
-sed 's/python/python3/' /usr/sbin/gunicorn-debian
-sed 's/17.5/19.6.0/g' /usr/bin/gunicorn
-sed 's/17.5/19.6.0/g' /usr/bin/gunicorn_django
-sed 's/17.5/19.6.0/g' /usr/bin/gunicorn_paster
+cat /usr/sbin/gunicorn-debian | sed 's/python/python3/g' > test && sudo mv test /usr/sbin/gunicorn-debian
+cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn
+cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn
+cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn_django
+cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn_django
+cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn_paster
+cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn_paster
 
 mkdir -p /home/box/web
 
