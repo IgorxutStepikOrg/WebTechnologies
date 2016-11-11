@@ -1,7 +1,6 @@
 #!/bin/bash
 
 sudo apt-get -y update
-sudo apt-get -y upgrade
 
 sudo apt-get -y remove django
 sudo apt-get -y remove gunicorn
