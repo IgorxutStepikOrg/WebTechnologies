@@ -8,7 +8,7 @@ sudo apt-get -y remove gunicorn
 sudo pip3 install django
 sudo pip3 install gunicorn
 
-mkdir -p /home/box/web
+mkdir -p {/home/box/web/public/{img,css,js},/home/box/web/{uploads,etc}}
 
 cd /home/box/web
 django-admin startproject ask
