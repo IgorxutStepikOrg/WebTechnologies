@@ -3,16 +3,11 @@
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
+sudo apt-get -y remove django
+sudo apt-get -y remove gunicorn
+
 sudo pip3 install django
 sudo pip3 install gunicorn
-
-cat /usr/sbin/gunicorn-debian | sed 's/python/python3/g' > test && sudo mv test /usr/sbin/gunicorn-debian
-cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn
-cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn
-cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn_django
-cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn_django
-cat /usr/bin/gunicorn | sed 's/17.5/19.6.0/g' > test && sudo mv test /usr/bin/gunicorn_paster
-cat /usr/bin/gunicorn | sed 's/python/python3/g' > test && sudo mv test /usr/bin/gunicorn_paster
 
 mkdir -p /home/box/web
 
@@ -26,7 +21,7 @@ cp /home/box/web/Module2_1/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
 cp /home/box/web/Module2_1/Step11/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_1/Step11/ask/ask/urls.py /home/box/web/ask/ask/urls.py
 
-cat /home/box/web/ask/ask/settings.py | sed 's/\'django.contrib.staticfiles\',/\'django.contrib.staticfiles\',\n\'qa\',/' > test && sudo mv test /usr/bin/gunicorn_paster
+cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',\n/ > test && sudo mv test /usr/bin/gunicorn_paster
 
 sudo ln -sf /home/box/web/Module2_1/Step11/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
