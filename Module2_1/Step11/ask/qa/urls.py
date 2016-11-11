@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
+from qa.views import *
 
 urlpatterns = patterns(
-  'qa.views',
   url(r'^$', 'index', name='index'),
   url(r'^login/$', 'login', name='login'),
   url(r'^signup/$', 'signup', name='signup'),
