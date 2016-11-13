@@ -23,7 +23,7 @@ sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-mysql -uroot -e "CREATE DATABASE 'db_ask'; CREATE USER 'user' IDENTIFIED BY 'password'; GRANT ALL ON db_ask.* TO 'user';"
+mysql -u root -e "CREATE DATABASE 'db_ask'; CREATE USER 'user' IDENTIFIED BY 'password'; GRANT ALL ON db_ask.* TO 'user';"
 
 cd /home/box/web/ask/
 python manage.py syncdb
