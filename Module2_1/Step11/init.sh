@@ -1,19 +1,19 @@
 #!/bin/bash
 
-sudo apt-get -y update
+#sudo apt-get -y update
 
-sudo apt-get -y remove gunicorn
+#sudo apt-get -y remove gunicorn
 
-sudo pip3 install django
-sudo pip3 install gunicorn
+#sudo pip3 install django
+#sudo pip3 install gunicorn
+
+sudo pip install --upgrade django
+sudo pip install --upgrade gunicorn
 
 mkdir -p {/home/box/web/public/{img,css,js},/home/box/web/{uploads,etc}}
 
-cd /home/box/web
-django-admin startproject ask
-
-cd /home/box/web/ask
-python3 manage.py startapp qa
+django-admin startproject /home/box/web/ask
+python manage.py startapp /home/box/web/ask/qa
 
 cp /home/box/web/Module2_1/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
 cp /home/box/web/Module2_1/Step11/ask/ask/urls.py /home/box/web/ask/ask/urls.py
