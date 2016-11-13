@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#sudo apt-get -y update
-
-#sudo apt-get -y remove gunicorn
-
-#sudo pip3 install django
-#sudo pip3 install gunicorn
-
-sudo pip install --upgrade django
-sudo pip install --upgrade gunicorn
-
 mkdir -p {/home/box/web/public/{img,css,js},/home/box/web/{uploads,etc}}
 
 cd /home/box/web
