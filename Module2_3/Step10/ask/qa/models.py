@@ -1,13 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
-    author = models.ForeignKey(User, related_name="question_author")
+    author = models.ForeignKey(
+        User,
+        related_name="question_author"
+    )
     likes = models.ManyToManyField(
-        User, related_name="question_like", blank=True)
+        User,
+        related_name="question_like",
+        blank=True
+    )
 
     class Meta:
         ordering = ('-added_at',)
@@ -16,7 +24,10 @@ class Question(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('question_detail', kwargs={'pk': self.pk})
+        return reverse(
+            'question_detail',
+            kwargs={'pk': self.pk}
+        )
 
 
 class Answer(models.Model):
