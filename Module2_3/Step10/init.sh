@@ -26,4 +26,6 @@ sudo /etc/init.d/nginx restart
 sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
+django-admin.py syncdb
+
 #end
