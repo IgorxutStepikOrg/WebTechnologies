@@ -3,8 +3,6 @@
 sudo apt-get -y update
 
 sudo apt-get -y remove gunicorn
-sudo apt-get -y upgrade python3
-sudo apt-get -y upgrade pip3
 
 sudo pip3 install django
 sudo pip3 install gunicorn
