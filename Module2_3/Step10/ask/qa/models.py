@@ -11,7 +11,7 @@ class QuestionManager(models.Manager):
 
 class Question(models.Model):
     title = models.CharField(
-        default="";
+        default="",
         max_length=255
     )
     text = models.TextField(
