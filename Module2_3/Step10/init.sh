@@ -5,7 +5,8 @@ mkdir -p {/home/box/web/public/{img,css,js},/home/box/web/{uploads,etc}}
 cd /home/box/web
 django-admin startproject ask
 
-python /home/box/web/ask/manage.py startapp qa
+cd /home/box/web/ask/
+python manage.py startapp qa
 
 cp /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
 cp /home/box/web/Module2_3/Step10/ask/ask/urls.py /home/box/web/ask/ask/urls.py
@@ -27,6 +28,7 @@ mysql -uroot -e "
   GRANT ALL ON db_ask.* TO 'user'@'localhost';
 "
 
-python /home/box/web/ask/manage.py syncdb
+cd /home/box/web/ask/
+python manage.py syncdb
 
 #end
