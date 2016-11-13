@@ -23,7 +23,7 @@ sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-mysql -u root -e "CREATE DATABASE 'db_ask';"
+mysql -u root -e "CREATE DATABASE db_ask;"
 mysql -u root -e "CREATE USER 'user' IDENTIFIED BY 'password';"
 mysql -u root -e "GRANT ALL ON db_ask.* TO 'user';"
 
