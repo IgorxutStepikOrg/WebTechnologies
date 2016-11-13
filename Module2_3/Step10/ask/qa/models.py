@@ -17,12 +17,10 @@ class Question(models.Model):
     author = models.ForeignKey(
         User,
         related_name="question_author"
-        blank=True
     )
     likes = models.ManyToManyField(
         User,
         related_name="question_like",
-        default=0
     )
     objects = QuestionManager()
 
@@ -36,7 +34,6 @@ class Answer(models.Model):
     author = models.ForeignKey(
         User,
         related_name='answer_author',
-        blank=True
     )
 
     def __unicode__(self):
