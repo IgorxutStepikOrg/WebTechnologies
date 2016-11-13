@@ -17,22 +17,27 @@ class Question(models.Model):
     author = models.ForeignKey(
         User,
         related_name="question_author"
+        blank=True
     )
     likes = models.ManyToManyField(
         User,
         related_name="question_like",
-        blank=True
+        default=0
     )
     objects = QuestionManager()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
     question = models.ForeignKey(Question)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(
+        User,
+        related_name='answer_author',
+        blank=True
+    )
 
-    def __str__(self):
-        return 'Answer by {}'.format(self.author)
+    def __unicode__(self):
+        return self.text
