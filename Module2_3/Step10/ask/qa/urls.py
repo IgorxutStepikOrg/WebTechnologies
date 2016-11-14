@@ -4,5 +4,8 @@ from qa.views import test
 
 
 urlpatterns = [
-    url(r'^(?P<num>\d+)/$', test),
+    url(
+        r"^(?P<num>\d+)/$",
+        test,
+    ),
 ]
