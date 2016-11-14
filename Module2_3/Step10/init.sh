@@ -9,9 +9,9 @@ cd /home/box/web/ask/
 python manage.py startapp qa
 
 cp /home/box/web/Module2_3/Step10/ask/ask/urls.py /home/box/web/ask/ask/urls.py
+cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.py
 cp /home/box/web/Module2_3/Step10/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
-cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.py
 
 cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 cat /home/box/web/ask/ask/settings.py | sed "s/'ENGINE': 'django.db.backends.sqlite3',/'ENGINE': 'django.db.backends.mysql',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
