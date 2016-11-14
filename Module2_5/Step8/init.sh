@@ -8,14 +8,14 @@ django-admin startproject ask
 cd /home/box/web/ask/
 python manage.py startapp qa
 
-mkdir -p /home/box/web/ask/qa/templates
+mkdir -p /home/box/web/ask/templates
 
 cp /home/box/web/Module2_5/Step8/ask/ask/urls.py /home/box/web/ask/ask/urls.py
 cp /home/box/web/Module2_5/Step8/ask/qa/forms.py /home/box/web/ask/qa/forms.py
 cp /home/box/web/Module2_5/Step8/ask/qa/models.py /home/box/web/ask/qa/models.py
 cp /home/box/web/Module2_5/Step8/ask/qa/views.py /home/box/web/ask/qa/views.py
-cp /home/box/web/Module2_5/Step8/ask/qa/templates/list.html /home/box/web/ask/qa/templates/list.html
-cp /home/box/web/Module2_5/Step8/ask/qa/templates/question.html /home/box/web/ask/qa/templates/question.html
+cp /home/box/web/Module2_5/Step8/ask/templates/list.html /home/box/web/ask/templates/list.html
+cp /home/box/web/Module2_5/Step8/ask/templates/question.html /home/box/web/ask/templates/question.html
 
 cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',\n/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 cat /home/box/web/ask/ask/settings.py | sed "s/'ENGINE': 'django.db.backends.sqlite3',/'ENGINE': 'django.db.backends.mysql',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
