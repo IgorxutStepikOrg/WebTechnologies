@@ -27,10 +27,10 @@ class Question(models.Model):
         User,
         related_name="question_author"
     )
-    likes = models.ManyToManyField(
-        User,
-        related_name="question_like"
-    )
+    #likes = models.ManyToManyField(
+    #    User,
+    #    related_name="question_like"
+    #)
     objects = QuestionManager()
 
     def __unicode__(self):
