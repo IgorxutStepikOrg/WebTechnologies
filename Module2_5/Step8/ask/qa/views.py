@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.paginator import Paginator
 
 from qa.models import Question, Answer
@@ -13,7 +13,7 @@ def test(request, *args, **kwargs):
 def index(request):
 
     try:
-        page = int(request.GET.get("page"))
+        page = int(request.GET.get('page'))
 
     except ValueError:
         page = 1
@@ -45,7 +45,7 @@ def index(request):
 def popular(request):
 
     try:
-        page = int(request.GET.get("page"))
+        page = int(request.GET.get('page'))
 
     except ValueError:
         page = 1
