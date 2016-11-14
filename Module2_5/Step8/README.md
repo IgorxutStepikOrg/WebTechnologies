@@ -8,3 +8,7 @@
  3. Ввести команду:
  
  ``` bash /home/box/web/Module2_5/Step8/init.sh ```
+
+ 4. Ответить ``` no ``` на вопрос командной строки:
+
+ ``` Would you like to create one now? (yes/now) ```
