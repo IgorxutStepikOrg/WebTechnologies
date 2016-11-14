@@ -34,6 +34,9 @@ class Question(models.Model):
         through = "Likes",
     )
     objects = QuestionManager()
+    
+    def get_url(self):
+        return "/question/{0}/".format(self.id)
 
 
 class Likes(models.Model):
