@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ question }}</title>
+    </head>
+
+    <body>
+
+        <div>
+            <h1>{{ question }}</h1>
+            <p>{{ question.text }}, {{ question.author_id }}</p>
+            <hr/>
+            <ul>
+            {% for answer in question.answer_set.all %}
+                <li>{{ answer }}, {{ answer.author_id }}</li>
+            {% endfor %}
+            </ul>
+            <hr/>
+            <form method="post" action="{{ question.get_url }}">
+                <fieldset>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </fieldset>
+                <button type="submit">Ответить</button>
+            </form>
+            <hr/>
+            <p><a href="/ask/">Ask a new question</a></p>
+            <p>User: {{ user }}</p>
+            <p>Session: {{ session }}</p>
+            <p><a href="/">Return to main page</a></p>
+        </div>
+
+    </body>
+
+</html>
