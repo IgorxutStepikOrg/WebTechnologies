@@ -7,4 +7,4 @@
 
  3. Ввести команду:
  
- ``` bash /home/box/web/Module2_3/Step10/init.sh ```
+ ``` bash /home/box/web/Module2_5/Step8/init.sh ```
