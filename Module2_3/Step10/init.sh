@@ -31,5 +31,3 @@ mysql -u root -e "FLUSH PRIVILEGES;"
 
 cd /home/box/web/ask/
 sudo python manage.py syncdb
-
-#end
