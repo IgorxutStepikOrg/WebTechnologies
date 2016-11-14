@@ -79,7 +79,7 @@ class Answer(models.Model):
     author = models.ForeignKey(
         User,
         blank=False,
-        related_name="answer_author"
+        related_name="answer_author",
     )
     
     def __unicode__(self):
