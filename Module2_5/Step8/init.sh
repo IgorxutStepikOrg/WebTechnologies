@@ -30,7 +30,7 @@ sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
 mysql -u root -e "CREATE DATABASE db_ask DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;"
-mysql -u root -e "CREATE USER 'user_ask' IDENTIFIED BY PASSWORD 'pass_ask';"
+mysql -u root -e "CREATE USER 'user_ask' IDENTIFIED BY 'pass_ask';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON db_ask.* TO 'user_ask';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
