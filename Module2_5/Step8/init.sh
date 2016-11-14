@@ -18,7 +18,7 @@ cp /home/box/web/Module2_5/Step8/ask/templates/list.html /home/box/web/ask/templ
 cp /home/box/web/Module2_5/Step8/ask/templates/question.html /home/box/web/ask/templates/question.html
 
 cat /home/box/web/ask/ask/settings.py | sed "s/WSGI_APPLICATION = 'ask.wsgi.application'/WSGI_APPLICATION = 'ask.wsgi.application'\n\nTEMPLATE_DIRS = BASE_DIR + '\/templates'\n/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
-cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',\n/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
+cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 cat /home/box/web/ask/ask/settings.py | sed "s/'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),/'NAME': 'db_ask',\n        'USER': 'user_ask',\n        'PASSWORD': 'pass_ask',\n        'HOST': 'localhost',        'PORT': '',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 
 sudo ln -sf /home/box/web/Module2_5/Step8/nginx.conf  /etc/nginx/sites-enabled/default
