@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} questions</title>
+</head>
+
+<body>
+    <div>
+        <h1>{{ title }} questions</h1>
+        <ul>
+        {% for question in questions %}
+            <li><a href="{{ question.get_url }}">{{ question }}, {{ question.author_id }}</a></li>
+        {% endfor %}
+        </ul>
+        <hr/>
+        <p>User: {{ user }}</p>
+        <p>Session: {{ session }}</p>
+    </div>
+</body>
+
+</html>
