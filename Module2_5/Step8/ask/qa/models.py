@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class QuestionManager(models.Manager):
 
     def new(self):
@@ -9,9 +10,10 @@ class QuestionManager(models.Manager):
     def popular(self):
         return self.order_by('-rating')
 
+
 class Question(models.Model):
     title = models.CharField(
-        default="",
+        default='',
         max_length=255
     )
     text = models.TextField(
@@ -25,7 +27,7 @@ class Question(models.Model):
     )
     author = models.ForeignKey(
         User,
-        related_name="question_author"
+        related_name='question_author'
     )
     likes = models.ManyToManyField(
         User,
@@ -33,13 +35,11 @@ class Question(models.Model):
     )
     objects = QuestionManager()
 
-    def get_url(self):
-        return "/question/{}/".format(self.id)
 
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
-        related_name="like_question"
+        related_name='like_question'
     )
     user = models.ForeignKey(
         User,
@@ -49,9 +49,10 @@ class Likes(models.Model):
         auto_now_add=True
     )
 
+
 class Answer(models.Model):
     text = models.TextField(
-        default=""
+        default=''
     )
     added_at = models.DateTimeField(
         auto_now_add=True
