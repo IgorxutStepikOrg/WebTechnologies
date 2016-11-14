@@ -33,6 +33,9 @@ class Question(models.Model):
     )
     objects = QuestionManager()
 
+    def get_url(self):
+        return "/question/{}/".format(self.id)
+
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
