@@ -26,9 +26,9 @@ sudo ln -sf /home/box/web/Module2_5/Step8/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
-mysql -u root -e "CREATE DATABASE db_ask;"
+mysql -u root -e "CREATE DATABASE db_ask DEFAULT CHARACTER SET=utf8;"
 
 cd /home/box/web/ask/
-python manage.py syncdb
+sudo python manage.py syncdb
 
 #end
