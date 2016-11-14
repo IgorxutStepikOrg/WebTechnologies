@@ -1,9 +1,7 @@
 from django import forms
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password
 
 from qa.models import Question, Answer
+
 
 class AskForm(forms.Form):
 
@@ -26,7 +24,7 @@ class AnswerForm(forms.Form):
     question = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_question(self):
-        question_id = self.cleaned_data['question']
+        question_id = self.cleaned_data["question"]
         try:
             question = Question.objects.get(id=question_id)
         except Question.DoesNotExist:
