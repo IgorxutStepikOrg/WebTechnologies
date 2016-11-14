@@ -28,13 +28,19 @@ class Question(models.Model):
         related_name="question_author"
     )
     likes = models.ManyToManyField(
-        through = 'User',
-        related_name="question_like"
+        User,
+        through = 'Likes'
     )
     objects = QuestionManager()
 
     def __unicode__(self):
         return self.title
+
+class Likes(models.Model):
+    user = models.ForeignKey(
+        User,
+        related_name="like_user"
+    )
 
 class Answer(models.Model):
     text = models.TextField(
