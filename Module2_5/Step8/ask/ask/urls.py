@@ -31,5 +31,5 @@ urlpatterns = [
     url(
         r"^new/",
         test,
-    )
+    ),
 ]
