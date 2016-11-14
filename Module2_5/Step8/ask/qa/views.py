@@ -58,8 +58,7 @@ def popular(request):
         request,
         'list.html',
         {
-            'title':
-            'Popular',
+            'title': 'Popular',
             'paginator': paginator,
             'questions': page.object_list,
             'page': page,
