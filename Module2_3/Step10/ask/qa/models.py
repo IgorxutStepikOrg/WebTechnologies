@@ -31,7 +31,7 @@ class Question(models.Model):
     )
     likes = models.ManyToManyField(
         User,
-        through="Likes"
+        through='Likes'
     )
     objects = QuestionManager()
 
