@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class QuestionManager(models.Manager):
 
     def new(self):
@@ -8,6 +9,7 @@ class QuestionManager(models.Manager):
     
     def popular(self):
         return self.order_by('-rating')
+
 
 class Question(models.Model):
     title = models.CharField(
@@ -33,6 +35,7 @@ class Question(models.Model):
     )
     objects = QuestionManager()
 
+
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
@@ -45,6 +48,7 @@ class Likes(models.Model):
     date = models.DateTimeField(
         auto_now_add=True
     )
+
 
 class Answer(models.Model):
     text = models.TextField(
