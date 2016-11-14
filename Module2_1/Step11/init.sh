@@ -20,5 +20,3 @@ sudo /etc/init.d/nginx restart
 
 sudo ln -sf /home/box/web/Module2_1/Step11/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
-
-#end
