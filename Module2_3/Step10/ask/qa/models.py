@@ -35,7 +35,10 @@ class Question(models.Model):
     )
     objects = QuestionManager()
 
+    def __unicode__(self):
+        return self.text
 
+    
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
@@ -64,3 +67,6 @@ class Answer(models.Model):
         User,
         related_name="answer_author"
     )
+    
+    def __unicode__(self):
+        return self.text
