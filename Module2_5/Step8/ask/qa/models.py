@@ -27,7 +27,7 @@ class Question(models.Model):
     )
     author = models.ForeignKey(
         User,
-        related_name='question_author'
+        related_name="question_author"
     )
     likes = models.ManyToManyField(
         User,
@@ -39,7 +39,7 @@ class Question(models.Model):
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
-        related_name='like_question'
+        related_name="like_question"
     )
     user = models.ForeignKey(
         User,
@@ -62,5 +62,5 @@ class Answer(models.Model):
     )
     author = models.ForeignKey(
         User,
-        related_name='answer_author'
+        related_name="answer_author"
     )
