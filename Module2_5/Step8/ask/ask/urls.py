@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^login/.*$', 'qa.views.test'),
     url(r'^signup/.*$', 'qa.views.test'),
-    url(r'^question/\d+/$', question),
+    url(r'^question/\d+/.*$', question),
     url(r'^ask/.*$', 'qa.views.test'),
     url(r'^popular/.*$', popular),
     url(r'^new/.*$', 'qa.views.test')
