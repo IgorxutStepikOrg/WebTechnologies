@@ -37,9 +37,16 @@ class Question(models.Model):
         return self.title
 
 class Likes(models.Model):
+    question = models.ForeignKey(
+        Question,
+        related_name="like_question"
+    )
     user = models.ForeignKey(
         User,
         related_name="like_user"
+    )
+    date = models.DateTimeField(
+        auto_now_add=True
     )
 
 class Answer(models.Model):
