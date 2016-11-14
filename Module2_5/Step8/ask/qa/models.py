@@ -28,7 +28,7 @@ class Question(models.Model):
         related_name="question_author"
     )
     likes = models.ManyToManyField(
-        User,
+        through = 'User',
         related_name="question_like"
     )
     objects = QuestionManager()
