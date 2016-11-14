@@ -5,6 +5,11 @@ from django.core.paginator import Paginator
 from qa.models import Question, Answer
 from qa.forms import AskForm, AnswerForm
 
+
+def test(request, *args, **kwargs):
+    return HttpResponse('OK')
+
+
 def index(request):
 
     try:
@@ -36,6 +41,7 @@ def index(request):
         }
     )
 
+
 def popular(request):
 
     try:
@@ -66,6 +72,7 @@ def popular(request):
             'session': request.session,
         }
     )
+
 
 def question(request, num):
 
