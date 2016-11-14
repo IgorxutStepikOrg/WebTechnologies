@@ -17,7 +17,7 @@ cp /home/box/web/Module2_5/Step8/ask/ask/urls.py /home/box/web/ask/ask/urls.py
 
 cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',\n/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 cat /home/box/web/ask/ask/settings.py | sed "s/'ENGINE': 'django.db.backends.sqlite3',/'ENGINE': 'django.db.backends.mysql',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
-cat /home/box/web/ask/ask/settings.py | sed "s/'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),/'NAME': 'db_ask',\n        'USER': 'root',\n        'PASSWORD': '',\n        'HOST': 'localhost',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
+cat /home/box/web/ask/ask/settings.py | sed "s/'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),/'NAME': 'db_ask',\n        'USER': 'user_ask',\n        'PASSWORD': 'pass_ask',\n        'DATABASE_HOST': '/var/run/mysql',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 
 sudo ln -sf /home/box/web/Module2_5/Step8/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
@@ -27,6 +27,9 @@ sudo /etc/init.d/gunicorn restart
 
 sudo /etc/init.d/mysql start
 mysql -u root -e "CREATE DATABASE db_ask DEFAULT CHARACTER SET=utf8;"
+mysql -u root -e "CREATE USER 'user_ask'@'localhost' IDENTIFIED BY 'pass_ask';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON db_ask.* TO 'user_ask'@'localhost';"
+mysql -u root -e "FLUSH PRIVILEGES;"
 
 cd /home/box/web/ask/
 sudo python manage.py syncdb
