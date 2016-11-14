@@ -9,7 +9,7 @@
 
 <body>
     <div>
-    <title>{{ title }} questions</title>
+        <p>{{ title }} questions</p>
         <ul>
         {% for question in questions %}
             <li><a href="{{ question.get_url }}">{{ question }}, {{ question.author_id }}</a></li>
