@@ -13,7 +13,7 @@ class QuestionManager(models.Manager):
 
 class Question(models.Model):
     title = models.CharField(
-        default='',
+        default=""
         max_length=255
     )
     text = models.TextField(
@@ -52,7 +52,7 @@ class Likes(models.Model):
 
 class Answer(models.Model):
     text = models.TextField(
-        default=''
+        default=""
     )
     added_at = models.DateTimeField(
         auto_now_add=True
