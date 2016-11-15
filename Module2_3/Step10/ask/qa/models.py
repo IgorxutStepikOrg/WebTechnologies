@@ -15,30 +15,30 @@ class Question(models.Model):
     title = models.CharField(
         blank=False,
         default="",
-        max_length=255,
+        max_length=255
     )
     text = models.TextField(
         blank=False,
-        default="",
+        default=""
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
-        blank=False,
+        blank=False
     )
     rating = models.IntegerField(
         blank=False,
-        default=0,
+        default=0
     )
     author = models.ForeignKey(
         User,
         blank=False,
-        related_name="question_author",
+        related_name="question_author"
     )
     likes = models.ManyToManyField(
         User,
         blank=True,
         through='Likes',
-        through_fields=('question', 'user'),
+        through_fields=('question', 'user')
     )
     objects = QuestionManager()
 
@@ -50,36 +50,36 @@ class Likes(models.Model):
     question = models.ForeignKey(
         Question,
         blank=False,
-        related_name="like_question",
+        related_name="like_question"
     )
     user = models.ForeignKey(
         User,
         blank=False,
-        related_name="like_user",
+        related_name="like_user"
     )
     date = models.DateTimeField(
         auto_now_add=True,
-        blank=False,
+        blank=False
     )
 
 
 class Answer(models.Model):
     text = models.TextField(
         blank=False,
-        default="",
+        default=""
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
-        blank=False,
+        blank=False
     )
     question = models.ForeignKey(
         Question,
-        blank=False,
+        blank=False
     )
     author = models.ForeignKey(
         User,
         blank=False,
-        related_name="answer_author",
+        related_name="answer_author"
     )
     
     def __unicode__(self):
