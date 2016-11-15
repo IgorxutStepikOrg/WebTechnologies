@@ -9,7 +9,7 @@ def test(request, *args, **kwargs):
     return HttpResponse("OK")
 
 
-def paginator(request, obj_list):
+def paginate(request, obj_list):
     p = Paginator(
         obj_list,
         10
@@ -26,7 +26,7 @@ def paginator(request, obj_list):
 
 
 def index(request):
-    questions = paginator(request, Question.objects.new())
+    questions = paginate(request, Question.objects.new())
 
     return render(
         request,
@@ -41,7 +41,7 @@ def index(request):
 
 
 def popular(request):
-    questions = paginator(request, Question.objects.popular())
+    questions = paginate(request, Question.objects.popular())
 
     return render(
         request,
