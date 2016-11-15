@@ -17,6 +17,7 @@ cp /home/box/web/Module2_6/Step11/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_6/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
 cp /home/box/web/Module2_6/Step11/ask/templates/list.html /home/box/web/ask/templates/list.html
 cp /home/box/web/Module2_6/Step11/ask/templates/question.html /home/box/web/ask/templates/question.html
+cp /home/box/web/Module2_6/Step11/ask/templates/ask.html /home/box/web/ask/templates/ask.html
 
 cat /home/box/web/ask/ask/settings.py | sed "s/WSGI_APPLICATION = 'ask.wsgi.application'/WSGI_APPLICATION = 'ask.wsgi.application'\n\nTEMPLATE_DIRS = BASE_DIR + '\/templates'/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
 cat /home/box/web/ask/ask/settings.py | sed "s/'django.contrib.staticfiles',/'django.contrib.staticfiles',\n    'qa',/" > temp_txt && sudo mv temp_txt /home/box/web/ask/ask/settings.py
