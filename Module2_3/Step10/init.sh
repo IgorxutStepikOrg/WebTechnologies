@@ -29,5 +29,5 @@ mysql -u root -e "CREATE USER 'user_ask' IDENTIFIED BY 'pass_ask';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON db_ask.* TO 'user_ask';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-cd /home/box/web/ask/
-sudo python manage.py syncdb --all
+## cd /home/box/web/ask/
+## sudo python manage.py syncdb
