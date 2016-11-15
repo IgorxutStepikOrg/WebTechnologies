@@ -13,12 +13,12 @@
         <hr/>
         <h1>Title: {{ question.title }}</h1>
         <p>{{ question.author_id }}:<br/>
-            {{ question.text }}, </p>
+            {{ question.text }}</p>
         <hr/>
         <ul>
         {% for answer in question.answer_set.all %}
             <li>{{ answer.author_id }}:<br/>
-                {{ answer.text }} </li>
+                {{ answer.text }}</li>
         {% endfor %}
         </ul>
     </body>
