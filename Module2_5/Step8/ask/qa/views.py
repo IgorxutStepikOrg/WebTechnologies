@@ -9,19 +9,23 @@ def test(request, *args, **kwargs):
     return HttpResponse("OK")
 
 
-def index(request):
-    questions_list = Question.objects.new()
-    paginator = Paginator(
-        questions_list,
+def paginator(request, obj_list):
+    p = Paginator(
+        obj_list,
         10
     )
     page = request.GET.get("page")
     try:
-        questions = paginator.page(page)
+        obj_list = p.page(page)
     except PageNotAnInteger:
-        questions = paginator.page(1)
+        obj_list = p.page(1)
     except EmptyPage:
-        questions = paginator.page(paginator.num_pages)
+        obj_list = p.page(p.num_pages)
+
+    return obj_list
+
+def index(request):
+    questions = paginator(request, Question.objects.new())
 
     return render(
         request,
@@ -35,18 +39,7 @@ def index(request):
     )
 
 def popular(request):
-    questions_list = Question.objects.popular()
-    paginator = Paginator(
-        questions_list,
-        10
-    )
-    page = request.GET.get("page")
-    try:
-        questions = paginator.page(page)
-    except PageNotAnInteger:
-        questions = paginator.page(1)
-    except EmptyPage:
-        questions = paginator.page(paginator.num_pages)
+    questions = paginator(request, Question.objects.popular())
 
     return render(
         request,
