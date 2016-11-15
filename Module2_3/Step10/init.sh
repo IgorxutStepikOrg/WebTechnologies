@@ -20,9 +20,6 @@ cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.p
 cp /home/box/web/Module2_3/Step10/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
 
-cd /home/box/web/ask/ask/
-echo >> settings.py
-
 sudo ln -sf /home/box/web/Module2_3/Step10/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
 
@@ -30,4 +27,5 @@ sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 cd /home/box/web/ask/
-sudo python manage.py syncdb
+echo >> ./ask/settings.py
+python manage.py syncdb
