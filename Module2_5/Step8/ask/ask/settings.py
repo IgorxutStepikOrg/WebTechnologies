@@ -33,6 +33,8 @@ ROOT_URLCONF = "ask.urls"
 
 WSGI_APPLICATION = "ask.wsgi.application"
 
+TEMPLATE_DIRS = "{0}/templates".format(BASE_DIR)
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
