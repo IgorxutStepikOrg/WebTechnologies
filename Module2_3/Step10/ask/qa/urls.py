@@ -6,5 +6,5 @@ from qa.views import test
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^(?P<num>\d+)/$', test)
+    url(r"^(?P<num>\d+)/$", test)
 ]
