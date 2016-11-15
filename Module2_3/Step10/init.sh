@@ -32,5 +32,5 @@ sudo /etc/init.d/nginx restart
 sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
-cd /home/box/web/ask/
-sudo python manage.py syncdb
+#cd /home/box/web/ask/
+#sudo python manage.py syncdb
