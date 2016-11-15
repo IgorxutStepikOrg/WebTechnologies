@@ -2,23 +2,21 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }} questions</title>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>{{ title }}</title>
+    </head>
 
-<body>
-    <div>
-        <h1>{{ title }} questions</h1>
-        <ul>
-        {% for question in questions %}
-            <li><a href="{{ question.get_url }}">{{ question }}, {{ question.author_id }}</a></li>
-        {% endfor %}
-        </ul>
-        <hr/>
+    <body>
         <p>User: {{ user }}</p>
         <p>Session: {{ session }}</p>
-    </div>
-</body>
+        <hr/>
+        <ul>
+        {% for question in questions %}
+            <li><a href="{{ question.get_url }}">{{ question.title }}</a> ({{ question.autor_id }}}})</li>
+        {% endfor %}
+        </ul>
+
+    </body>
 
 </html>
