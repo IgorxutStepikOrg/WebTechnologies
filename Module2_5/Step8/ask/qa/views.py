@@ -7,7 +7,7 @@ from qa.forms import AskForm, AnswerForm
 
 
 def test(request, *args, **kwargs):
-    return HttpResponse("OK")
+    return HttpResponse('OK')
 
 
 def index(request):
