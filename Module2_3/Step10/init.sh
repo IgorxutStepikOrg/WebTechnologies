@@ -30,4 +30,4 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON db_ask.* TO 'user_ask';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
 cd /home/box/web/ask/
-sudo python manage.py syncdb
+sudo python manage.py syncdb --all
