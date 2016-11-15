@@ -24,6 +24,7 @@ def paginator(request, obj_list):
 
     return obj_list
 
+
 def index(request):
     questions = paginator(request, Question.objects.new())
 
@@ -37,6 +38,7 @@ def index(request):
             "session": request.session,
         }
     )
+
 
 def popular(request):
     questions = paginator(request, Question.objects.popular())
