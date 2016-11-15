@@ -27,7 +27,7 @@ class AnswerForm(forms.Form):
     question = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_question(self):
-        question_id = self.cleaned_data["question"]
+        question_id = self.cleaned_data['question']
         try:
             question = Question.objects.get(id=question_id)
         except Question.DoesNotExist:
