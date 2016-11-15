@@ -10,7 +10,11 @@
     <body>
 
         <div>
-            <h1>{{ question }}</h1>
+            
+            <p>User: {{ user }}</p>
+            <p>Session: {{ session }}</p>
+            <p><a href="/">Return to main page</a></p>
+            
             <p>{{ question.text }}, {{ question.author_id }}</p>
             <hr/>
             <ul>
@@ -28,9 +32,7 @@
             </form>
             <hr/>
             <p><a href="/ask/">Ask a new question</a></p>
-            <p>User: {{ user }}</p>
-            <p>Session: {{ session }}</p>
-            <p><a href="/">Return to main page</a></p>
+
         </div>
 
     </body>
