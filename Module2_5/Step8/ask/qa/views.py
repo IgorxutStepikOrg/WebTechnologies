@@ -7,66 +7,63 @@ from qa.forms import AskForm, AnswerForm
 
 
 def test(request, *args, **kwargs):
-    return HttpResponse('OK')
+    return HttpResponse("OK")
 
 
 def index(request):
-    try:
-        page = int(request.GET.get("page"))
-    except ValueError:
-        page = 1
-    except TypeError:
-        page = 1
-    questions = Question.objects.new()
+    questions_list = Question.objects.new()
     paginator = Paginator(
-        questions,
-        10,
+        questions_list,
+        10
     )
-    page = paginator.page(page)
+    page = request.GET.get("page")
+    try:
+        questions = paginator.page(page)
+    except PageNotAnInteger:
+        questions = paginator.page(1)
+    except EmptyPage:
+        questions = paginator.page(paginator.num_pages)
+
     return render(
         request,
         "list.html",
         {
-            "title": "Latest",
-            "paginator": paginator,
-            "questions": page.object_list,
-            "page": page,
+            "title": "NEW QUESTIONS",
+            "questions": questions,
             "user": request.user,
             "session": request.session,
-        },
+        }
     )
-
 
 def popular(request):
-    try:
-        page = int(request.GET.get("page"))
-    except ValueError:
-        page = 1
-    except TypeError:
-        page = 1
-    questions = Question.objects.popular()
+    questions_list = Question.objects.popular()
     paginator = Paginator(
-        questions,
-        10,
+        questions_list,
+        10
     )
-    page = paginator.page(page)
+    page = request.GET.get("page")
+    try:
+        questions = paginator.page(page)
+    except PageNotAnInteger:
+        questions = paginator.page(1)
+    except EmptyPage:
+        questions = paginator.page(paginator.num_pages)
+
     return render(
         request,
         "list.html",
         {
-            "title": "Popular",
-            "paginator": paginator,
-            "questions": page.object_list,
-            "page": page,
+            "title": "POPULAR QUESTIONS",
+            "questions": questions,
             "user": request.user,
             "session": request.session,
-        },
+        }
     )
 
 
 def question(request, num):
     try:
-        q = Question.objects.get(id=num)
+        question = Question.objects.get(id=num)
     except Question.DoesNotExist:
         raise Http404
     if request.method == "POST":
@@ -77,14 +74,15 @@ def question(request, num):
             url = q.get_url()
             return HttpResponseRedirect(url)
     else:
-        form = AnswerForm(initial={"question": q.id})
+        form = AnswerForm(initial={"question": question.id})
+
     return render(
         request,
         "question.html",
         {
-            "question": q,
+            "question": question,
             "form": form,
             "user": request.user,
             "session": request.session,
-        },
+        }
     )
