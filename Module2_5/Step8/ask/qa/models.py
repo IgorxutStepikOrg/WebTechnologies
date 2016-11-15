@@ -5,66 +5,85 @@ from django.contrib.auth.models import User
 class QuestionManager(models.Manager):
 
     def new(self):
-        return self.order_by("-added_at")
+        return self.order_by('-added_at')
     
     def popular(self):
-        return self.order_by("-rating")
+        return self.order_by('-rating')
 
 
 class Question(models.Model):
 
     title = models.CharField(
+        blank=False,
         default="",
-        max_length=255,
+        max_length=255
     )
     text = models.TextField(
-        default="",
+        blank=False,
+        default=""
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
+        blank=False
     )
     rating = models.IntegerField(
-        default=0,
+        blank=False,
+        default=0
     )
     author = models.ForeignKey(
         User,
-        related_name="question_author",
+        blank=False,
+        related_name="question_author"
     )
     likes = models.ManyToManyField(
         User,
-        through = "Likes",
+        blank=True,
+        through='Likes'
     )
     objects = QuestionManager()
     
     def get_url(self):
         return "/question/{0}/".format(self.id)
 
+    def __unicode__(self):
+        return self.text
+
 
 class Likes(models.Model):
     question = models.ForeignKey(
         Question,
-        related_name="like_question",
+        blank=False,
+        related_name="like_question"
     )
     user = models.ForeignKey(
         User,
-        related_name="like_user",
+        blank=False,
+        related_name="like_user"
     )
     date = models.DateTimeField(
         auto_now_add=True,
+        blank=False
     )
 
 
 class Answer(models.Model):
     text = models.TextField(
-        default="",
+        blank=False,
+        default=""
     )
     added_at = models.DateTimeField(
         auto_now_add=True,
+        blank=False
     )
     question = models.ForeignKey(
         Question,
+        blank=False
     )
     author = models.ForeignKey(
         User,
-        related_name="answer_author",
+        blank=False,
+        related_name="answer_author"
     )
+    
+    def __unicode__(self):
+        return self.text
