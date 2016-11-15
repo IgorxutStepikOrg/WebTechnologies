@@ -66,22 +66,12 @@ def question(request, num):
         question = Question.objects.get(id=num)
     except Question.DoesNotExist:
         raise Http404
-    if request.method == "POST":
-        form = AnswerForm(request.POST)
-        if form.is_valid():
-            form._user = request.user
-            _ = form.save()
-            url = q.get_url()
-            return HttpResponseRedirect(url)
-    else:
-        form = AnswerForm(initial={"question": question.id})
 
     return render(
         request,
         "question.html",
         {
             "question": question,
-            "form": form,
             "user": request.user,
             "session": request.session,
         }
