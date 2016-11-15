@@ -28,6 +28,7 @@ mysql -u root -e "CREATE DATABASE db_ask DEFAULT CHARACTER SET utf8 DEFAULT COLL
 mysql -u root -e "CREATE USER 'user_ask' IDENTIFIED BY 'pass_ask';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON db_ask.* TO 'user_ask';"
 mysql -u root -e "FLUSH PRIVILEGES;"
+sudo /etc/init.d/mysql restart
 
 cd /home/box/web/ask/
 sudo python manage.py syncdb
