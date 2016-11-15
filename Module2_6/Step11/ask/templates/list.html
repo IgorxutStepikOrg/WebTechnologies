@@ -8,16 +8,15 @@
 </head>
 
 <body>
-    <div>
-        <ul>
-        {% for question in questions %}
-            <li><a href="{{ question.get_url }}">{{ question }}, {{ question.author_id }}</a></li>
-        {% endfor %}
-        </ul>
-        <hr/>
-        <p>User: {{ user }}</p>
-        <p>Session: {{ session }}</p>
-    </div>
+
+    <p>User: {{ user }}</p>
+    <p>Session: {{ session }}</p>
+    <ul>
+    {% for question in questions %}
+        <li><a href="{{ question.get_url }}">{{ question }}, {{ question.author_id }}</a></li>
+    {% endfor %}
+    </ul>
+
 </body>
 
 </html>
