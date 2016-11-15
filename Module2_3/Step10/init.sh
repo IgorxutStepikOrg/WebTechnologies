@@ -20,7 +20,8 @@ cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.p
 cp /home/box/web/Module2_3/Step10/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
 
-echo >> /home/box/web/ask/ask/settings.py
+cd /home/box/web/ask/ask/
+echo >> settings.py
 
 sudo ln -sf /home/box/web/Module2_3/Step10/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
