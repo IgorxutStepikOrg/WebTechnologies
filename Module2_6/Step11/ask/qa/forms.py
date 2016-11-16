@@ -5,9 +5,10 @@ from django.contrib.auth.hashers import make_password
 
 from qa.models import Question, Answer
 
+
 class AskForm(forms.Form):
 
-    title = forms.CharField(max_length=100)
+    title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
     def clean(self):
@@ -26,7 +27,7 @@ class AnswerForm(forms.Form):
     question = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_question(self):
-        question_id = self.cleaned_data['question']
+        question_id = self.cleaned_data["question"]
         try:
             question = Question.objects.get(id=question_id)
         except Question.DoesNotExist:
