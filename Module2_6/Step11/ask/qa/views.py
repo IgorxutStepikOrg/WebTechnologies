@@ -80,7 +80,6 @@ def question(request, num):
             "session": request.session,
             "form": form,
             "button_name": "answer",
-            "url_name": "answer",
         }
     )
 
@@ -102,7 +101,6 @@ def answer(request):
         {
             "form": form,
             "button_name": "answer",
-            "url_name": "answer",
         }
     )
 
@@ -124,6 +122,5 @@ def ask(request):
         {
             "form": form,
             "button_name": "ask",
-            "url_name": "ask"
         }
     )
