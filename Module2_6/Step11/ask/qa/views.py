@@ -81,6 +81,7 @@ def question(request, num):
         }
     )
 
+
 def answer(request):
     if request.method == "POST":
         form = AnswerForm(request.POST)
@@ -101,7 +102,8 @@ def answer(request):
             "url_name": "answer",
         }
     )
-    
+
+
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
