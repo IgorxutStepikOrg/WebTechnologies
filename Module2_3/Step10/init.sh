@@ -14,17 +14,11 @@ django-admin startproject ask
 cd /home/box/web/ask/
 python manage.py startapp qa
 
-rm /home/box/web/ask/ask/settings.py
-rm /home/box/web/ask/ask/urls.py
-rm /home/box/web/ask/qa/models.py
-rm /home/box/web/ask/qa/urls.py
-rm /home/box/web/ask/qa/views.py
-
-cp /home/box/web/Module2_3/Step10/ask/ask/settings.py /home/box/web/ask/ask/settings.py
-cp /home/box/web/Module2_3/Step10/ask/ask/urls.py /home/box/web/ask/ask/urls.py
-cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.py
-cp /home/box/web/Module2_3/Step10/ask/qa/urls.py /home/box/web/ask/qa/urls.py
-cp /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
+cat /home/box/web/Module2_3/Step10/ask/ask/settings.py /home/box/web/ask/ask/settings.py
+cat /home/box/web/Module2_3/Step10/ask/ask/urls.py /home/box/web/ask/ask/urls.py
+cat /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.py
+cat /home/box/web/Module2_3/Step10/ask/qa/urls.py /home/box/web/ask/qa/urls.py
+cat /home/box/web/Module2_3/Step10/ask/qa/views.py /home/box/web/ask/qa/views.py
 
 sudo ln -sf /home/box/web/Module2_3/Step10/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
