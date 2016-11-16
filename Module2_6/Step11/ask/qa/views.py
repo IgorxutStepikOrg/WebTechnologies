@@ -79,6 +79,8 @@ def question(request, num):
             "user": request.user,
             "session": request.session,
             "form": form,
+            "button_name": "answer",
+            "url_name": "answer",
         }
     )
 
