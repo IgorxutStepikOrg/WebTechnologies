@@ -14,6 +14,12 @@ django-admin startproject ask
 cd /home/box/web/ask/
 python manage.py startapp qa
 
+rm /home/box/web/ask/ask/settings.py
+rm /home/box/web/ask/ask/urls.py
+rm /home/box/web/ask/qa/models.py
+rm /home/box/web/ask/qa/urls.py
+rm /home/box/web/ask/qa/views.py
+
 cp /home/box/web/Module2_3/Step10/ask/ask/settings.py /home/box/web/ask/ask/settings.py
 cp /home/box/web/Module2_3/Step10/ask/ask/urls.py /home/box/web/ask/ask/urls.py
 cp /home/box/web/Module2_3/Step10/ask/qa/models.py /home/box/web/ask/qa/models.py
@@ -27,5 +33,5 @@ sudo ln -sf /home/box/web/Module2_3/Step10/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 cd /home/box/web/ask/
-echo >> ./ask/settings.py
+# echo >> ./ask/settings.py
 python manage.py syncdb
