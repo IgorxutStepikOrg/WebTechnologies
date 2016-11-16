@@ -80,3 +80,6 @@ class Answer(models.Model):
         blank=False,
         related_name="answer_author",
     )
+
+    def get_url(self):
+        return "/answer/{0}/".format(self.id)
