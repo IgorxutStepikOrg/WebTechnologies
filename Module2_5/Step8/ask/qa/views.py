@@ -10,19 +10,19 @@ def test(request, *args, **kwargs):
 
 
 def paginate(request, obj_list):
-    p = Paginator(
+    paginator = Paginator(
         obj_list,
         10
     )
     page = request.GET.get("page")
     try:
-        obj_list = p.page(page)
+        lst = paginator.page(page)
     except PageNotAnInteger:
-        obj_list = p.page(1)
+        lst = paginator.page(1)
     except EmptyPage:
-        obj_list = p.page(p.num_pages)
+        lst = paginator.page(paginator.num_pages)
 
-    return obj_list
+    return lst
 
 
 def index(request):
