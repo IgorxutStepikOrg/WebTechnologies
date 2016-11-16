@@ -26,7 +26,6 @@ cp /home/box/web/Module2_6/Step11/ask/templates/list.html /home/box/web/ask/temp
 cp /home/box/web/Module2_6/Step11/ask/templates/question.html /home/box/web/ask/templates/question.html
 cp /home/box/web/Module2_6/Step11/ask/templates/ask.html /home/box/web/ask/templates/ask.html
 
-
 sudo ln -sf /home/box/web/Module2_5/Step8/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
 
