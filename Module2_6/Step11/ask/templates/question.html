@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
 
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"/>
         <title>{{ question }}</title>
     </head>
 
     <body>
-
-        <div>
-            
-            <p>User: {{ user }}</p>
-            <p>Session: {{ session }}</p>
-            <p><a href="/">Return to main page</a></p>
-            
-            <p>{{ question.text }}, {{ question.author_id }}</p>
-            <hr/>
-            <ul>
-            {% for answer in question.answer_set.all %}
-                <li>{{ answer }}, {{ answer.author_id }}</li>
-            {% endfor %}
-            </ul>
-            <hr/>
-            <form method="post" action="{{ question.get_url }}">
-                <fieldset>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                </fieldset>
-                <button type="submit">Ответить</button>
-            </form>
-            <hr/>
-            <p><a href="/ask/">Ask a new question</a></p>
-
-        </div>
-
+        <p>User: {{ user }}</p>
+        <p>Session: {{ session }}</p>
+        <hr/>
+        <p>Title: {{ question.title }}</p>
+        <p>{{ question.author_id }}:<br/>
+            {{ question.text }}</p>
+        <hr/>
+        <ul>
+        {% for answer in question.answer_set.all %}
+            <li>{{ answer.author_id }}:<br/>
+                {{ answer.text }}</li>
+        {% endfor %}
+        </ul>
+        <form method="post" action="{{ question.get_url }}">
+            <fieldset>
+                {% csrf_token %}
+                {{ form.as_p }}
+            </fieldset>
+            <button type="submit">Ответить</button>
+        </form>
     </body>
 
 </html>
