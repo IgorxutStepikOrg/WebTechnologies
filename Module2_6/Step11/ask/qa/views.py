@@ -60,6 +60,15 @@ def question(request, num):
         question = Question.objects.get(id=num)
     except Question.DoesNotExist:
         raise Http404
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        form._user = request.user
+        if form.is_valid():
+            form.save()
+            url = question.get_url()
+            return redirect(url)
+    else:
+        form = AnswerForm()
 
     return render(
         request,
@@ -68,5 +77,48 @@ def question(request, num):
             "question": question,
             "user": request.user,
             "session": request.session,
+            "form": form,
+        }
+    )
+
+def answer(request):
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        form._user = request.user
+        if form.is_valid():
+            answer = form.save()
+            url = answer.question.get_url()
+            return redirect(url)
+    else:
+        form = AnswerForm()
+
+    return render(
+        request,
+        "answer.html",
+        {
+            "form": form,
+            "button_name": "answer",
+            "url_name": "answer",
+        }
+    )
+    
+def ask(request):
+    if request.method == "POST":
+        form = AskForm(request.POST)
+        form._user = request.user
+        if form.is_valid():
+            question = form.save()
+            url = question.get_url()
+            return redirect(url)
+    else:
+        form = AskForm()
+
+    return render(
+        request,
+        "ask.html",
+        {
+            "form": form,
+            "button_name": "ask",
+            "url_name": "ask"
         }
     )
