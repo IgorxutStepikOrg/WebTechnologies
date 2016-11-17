@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
+from django.shortcuts import render
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from qa.models import Question, Answer
@@ -66,7 +66,7 @@ def question(request, num):
         form._user = request.user
         if form.is_valid():
             form.save()
-            return redirect(question.get_url())
+            return HttpResponseRedirect(question.get_url())
     if request.method == "GET":
         form = AnswerForm()
 
@@ -89,7 +89,7 @@ def answer(request):
         form._user = request.user
         if form.is_valid():
             answer = form.save()
-            return redirect(answer.question.get_url())
+            return HttpResponseRedirect(answer.question.get_url())
     if request.method == "GET":
         form = AnswerForm()
 
@@ -109,7 +109,7 @@ def ask(request):
         form._user = request.user
         if form.is_valid():
             question = form.save()
-            return redirect(question.get_url())
+            return HttpResponseRedirect(question.get_url())
     if request.method == "GET":
         form = AskForm()
 
