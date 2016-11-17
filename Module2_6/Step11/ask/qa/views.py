@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -66,9 +66,8 @@ def question(request, num):
         form._user = request.user
         if form.is_valid():
             form.save()
-            url = question.get_url()
-            return redirect(url)
-    else:
+            return redirect(question.get_url())
+    if request.method == "GET":
         form = AnswerForm()
 
     return render(
@@ -90,9 +89,8 @@ def answer(request):
         form._user = request.user
         if form.is_valid():
             answer = form.save()
-            url = answer.question.get_url()
-            return redirect(url)
-    else:
+            return redirect(answer.question.get_url())
+    if request.method == "GET":
         form = AnswerForm()
 
     return render(
@@ -111,9 +109,8 @@ def ask(request):
         form._user = request.user
         if form.is_valid():
             question = form.save()
-            url = question.get_url()
-            return redirect(url)
-    else:
+            return redirect(question.get_url())
+    if request.method == "GET":
         form = AskForm()
 
     return render(
