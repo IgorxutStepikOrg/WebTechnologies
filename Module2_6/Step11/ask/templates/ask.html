@@ -12,8 +12,8 @@
         <p>Session: {{ session }}</p>
         <hr/>
         <form method="post" action="/ask/">
+            {% csrf_token %}
             <fieldset>
-                {% csrf_token %}
                 {{ form.as_p }}
             </fieldset>
             <button type="submit">Сохранить</button>
