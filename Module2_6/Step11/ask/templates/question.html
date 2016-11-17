@@ -21,13 +21,8 @@
                 {{ answer.text }}</li>
         {% endfor %}
         </ul>
-        <form method="post" action="{{ question.get_url }}">
-            {% csrf_token %}
-            <fieldset>
-                {{ form.as_p }}
-            </fieldset>
-            <button type="submit">{{ button_name }}</button>
-        </form>
+        {{ form.as_p }}
+        {% csrf_token %}
     </body>
 
 </html>
