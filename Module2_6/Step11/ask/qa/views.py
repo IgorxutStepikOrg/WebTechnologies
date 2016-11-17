@@ -78,7 +78,6 @@ def question(request, num):
             "user": request.user,
             "session": request.session,
             "form": form,
-            "button_name": "answer",
         }
     )
 
@@ -90,16 +89,8 @@ def answer(request):
         if form.is_valid():
             answer = form.save()
             return HttpResponseRedirect(answer.question.get_url())
-    if request.method == "GET":
-        form = AnswerForm()
-
-    return render(
-        request,
-        "answer.html",
-        {
-            "form": form,
-        }
-    )
+    else :
+        raise Http404
 
 
 def ask(request):
