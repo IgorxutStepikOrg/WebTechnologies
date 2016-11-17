@@ -98,7 +98,6 @@ def answer(request):
         "answer.html",
         {
             "form": form,
-            "button_name": "answer",
         }
     )
 
@@ -118,6 +117,5 @@ def ask(request):
         "ask.html",
         {
             "form": form,
-            "button_name": "ask",
         }
     )
