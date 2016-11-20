@@ -12,8 +12,8 @@ def empty_validation(var):
 
 class AskForm(forms.Form):
 
-    title = forms.CharField(max_length=255, label="заголовок вопроса")
-    text = forms.CharField(widget=forms.Textarea, label="тело вопроса")
+    title = forms.CharField(max_length=255, label="title")
+    text = forms.CharField(widget=forms.Textarea, label="text")
 
     def clean_title(self)
         title = self.cleaned_data["title"]
@@ -37,7 +37,7 @@ class AskForm(forms.Form):
 
 class AnswerForm(forms.Form):
 
-    text = forms.CharField(widget=forms.Textarea, label="тело ответа")
+    text = forms.CharField(widget=forms.Textarea, label="text")
     question = forms.IntegerField(widget=forms.HiddenInput)
 
     def clean_text(self)
