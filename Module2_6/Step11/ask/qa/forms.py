@@ -17,20 +17,19 @@ class AskForm(forms.Form):
 #    def save(self):
 #        return Question.objects.create(**self.cleaned_data)
 
-	author = 1
-	
-	def clean_title(self) :
-		title = self.cleaned_data['title']
-		return title
+    author = 1
 
-	def clean_text(self) :
-		text = self.cleaned_data['text']
-		return text
-		
-	def save(self) :
-		quest = Question.objects.create(title=self.cleaned_data['title'], text=self.cleaned_data['text'], author=self.author)
-		#quest.save()
-		return quest
+    def clean_title(self) :
+        title = self.cleaned_data['title']
+        return title
+
+    def clean_text(self) :
+        text = self.cleaned_data['text']
+        return text
+
+    def save(self) :
+        quest = Question.objects.create(title=self.cleaned_data['title'], text=self.cleaned_data['text'], author=self.author)
+        return quest
 
 class AnswerForm(forms.Form):
 
