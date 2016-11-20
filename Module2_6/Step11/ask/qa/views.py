@@ -75,6 +75,8 @@ def answer(request):
         form = AnswerForm(request.POST)
         if form.is_valid():
             answer = form.save()
+            answer.author_id = request.user
+            answer.save()
             return HttpResponseRedirect(answer.question.get_absolute_url())
     else :
         raise Http404
@@ -85,6 +87,8 @@ def ask(request):
         form = AskForm(request.POST)
         if form.is_valid():
             question = form.save()
+            question.author_id = request.user
+            question.save()
             return HttpResponseRedirect(question.get_absolute_url())
     if request.method == "GET":
         form = AskForm()
