@@ -15,12 +15,12 @@ class AskForm(forms.Form):
     title = forms.CharField(max_length=255, label="title")
     text = forms.CharField(widget=forms.Textarea, label="text")
 
-    def clean_title(self)
+    def clean_title(self):
         title = self.cleaned_data["title"]
         empty_validation(title)
         return title
 
-    def clean_text(self)
+    def clean_text(self):
         text = self.cleaned_data["text"]
         empty_validation(text)
         return text
@@ -40,7 +40,7 @@ class AnswerForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, label="text")
     question = forms.IntegerField(widget=forms.HiddenInput)
 
-    def clean_text(self)
+    def clean_text(self):
         text = self.cleaned_data["text"]
         empty_validation(text)
         return text
