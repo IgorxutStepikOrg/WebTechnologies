@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from qa.models import Question, Answer
@@ -57,12 +57,7 @@ def question(request, num):
         question = Question.objects.get(id=num)
     except Question.DoesNotExist:
         raise Http404
-    if request.method == "POST":
-        form = AnswerForm(request.POST)
-        form._user = request.user
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(question.get_url())
+
     if request.method == "GET":
         form = AnswerForm()
 
@@ -79,10 +74,11 @@ def question(request, num):
 def answer(request):
     if request.method == "POST":
         form = AnswerForm(request.POST)
-        form._user = request.user
         if form.is_valid():
             answer = form.save()
-            return HttpResponseRedirect(answer.question.get_url())
+            answer.author = request.user
+            answer.save()
+            return redirect(answer.question)
     else :
         raise Http404
 
@@ -90,10 +86,11 @@ def answer(request):
 def ask(request):
     if request.method == "POST":
         form = AskForm(request.POST)
-        form._user = request.user
         if form.is_valid():
             question = form.save()
-            return HttpResponseRedirect(question.get_url())
+            question.author = request.user
+            question.save()
+            return redirect(question)
     if request.method == "GET":
         form = AskForm()
 
