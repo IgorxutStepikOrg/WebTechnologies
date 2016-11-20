@@ -7,7 +7,7 @@
 {% block content %}
     <ul>
     {% for question in questions %}
-        <li>{{ question.author_id }}:<br/><a href="{{ question.get_url }}">{{ question.title }}</a></li>
+        <li>{{ question.author_id }}:<br/><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
     {% endfor %}
     </ul>
 {% endblock %}
