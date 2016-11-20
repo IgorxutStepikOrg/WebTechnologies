@@ -34,6 +34,7 @@ class AskForm(forms.Form):
         question.save()
         return question
 
+
 class AnswerForm(forms.Form):
 
     text = forms.CharField(widget=forms.Textarea, label="тело ответа")
