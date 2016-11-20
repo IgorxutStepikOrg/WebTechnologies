@@ -30,8 +30,8 @@ class AskForm(forms.Form):
 #             self.cleaned_data["author_id"] = 1
 #         else:
 #             self.cleaned_data["author"] = self._user
-        self.cleaned_data["author_id"] = 1
         question = Question(**self.cleaned_data)
+        question.author_id = 1
         question.save()
         return question
 
@@ -60,7 +60,7 @@ class AnswerForm(forms.Form):
 #             self.cleaned_data["author_id"] = 1
 #         else:
 #             self.cleaned_data["author"] = self._user
-        self.cleaned_data["author_id"] = 1
         answer = Answer(**self.cleaned_data)
+        answer.author_id = 1
         answer.save()
         return answer
