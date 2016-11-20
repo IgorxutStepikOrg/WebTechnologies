@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class QuestionManager(models.Manager):
@@ -40,6 +41,9 @@ class Question(models.Model):
         through="Likes",
     )
     objects = QuestionManager()
+
+    def __unicode__(self):
+        return self.text
     
     def get_absolute_url(self):
         return reverse("question", kwargs={"id": self.id})
@@ -80,3 +84,6 @@ class Answer(models.Model):
         blank=False,
         related_name="answer_author",
     )
+    
+    def __unicode__(self):
+        return self.text
