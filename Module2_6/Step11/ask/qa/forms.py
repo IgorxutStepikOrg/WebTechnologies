@@ -11,25 +11,25 @@ class AskForm(forms.Form):
     title = forms.CharField(max_length=255)
     text = forms.CharField(widget=forms.Textarea)
 
-    def clean(self):
-        return self.cleaned_data
+#     def clean(self):
+#         return self.cleaned_data
 
-    def save(self):
-        return Question.objects.create(**self.cleaned_data)
+#     def save(self):
+#         return Question.objects.create(**self.cleaned_data)
 
-#     author = 1
+    author = 1
 
-#     def clean_title(self) :
-#         title = self.cleaned_data['title']
-#         return title
+    def clean_title(self) :
+        title = self.cleaned_data['title']
+        return title
 
-#     def clean_text(self) :
-#         text = self.cleaned_data['text']
-#         return text
+    def clean_text(self) :
+        text = self.cleaned_data['text']
+        return text
 
-#     def save(self) :
-#         quest = Question.objects.create(title=self.cleaned_data['title'], text=self.cleaned_data['text'], author=self.author)
-#         return quest
+    def save(self) :
+        quest = Question.objects.create(title=self.cleaned_data['title'], text=self.cleaned_data['text'], author=self.author)
+        return quest
 
 class AnswerForm(forms.Form):
 
