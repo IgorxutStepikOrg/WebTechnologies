@@ -57,7 +57,7 @@ def question(request, id):
     question = get_object_or_404(Question, id=id)
     answers = question.answer_set.all()
     if request.method == "GET":
-        form = AnswerForm({"question": question.id})
+        form = AnswerForm(initial={"question": question.id})
 
     return render(
         request,
