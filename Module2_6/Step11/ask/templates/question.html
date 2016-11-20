@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 
 {% block title %}
-    {{ question }}
+    {{ question.title }}
 {% endblock %}
 
 {% block content %}
@@ -12,6 +12,6 @@
         <li>{{ answer.author_id }}:<br/>{{ answer.text }}</li>
     {% endfor %}
     </ul>
-    {{ form.as_p }}
     {% csrf_token %}
+    {{ form.as_p }}
 {% endblock %}
