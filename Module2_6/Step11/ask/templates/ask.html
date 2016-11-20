@@ -1,18 +1,10 @@
-<!DOCTYPE html>
+{% extends "main.html" %}
 
-<html>
-    
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Ask question</title>
-    </head>
+{% block title %}
+    Ask question
+{% endblock %}
 
-    <body>
-        <p>User: {{ user }}</p>
-        <p>Session: {{ session }}</p>
-        <hr/>
-        {{ form.as_p }}
-        {% csrf_token %}
-    </body>
-
-</html>
+{% block content %}
+    {{ form.as_p }}
+    {% csrf_token %}
+{% endblock %}
