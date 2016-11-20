@@ -41,8 +41,8 @@ class Question(models.Model):
     )
     objects = QuestionManager()
     
-    def get_url(self):
-        return "/question/{0}/".format(self.id)
+    def get_absolute_url(self):
+        return reverse("question", kwargs={"id": self.id})
 
     
 class Likes(models.Model):
