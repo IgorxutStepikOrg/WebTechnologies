@@ -33,6 +33,7 @@ class Question(models.Model):
     author = models.ForeignKey(
         User,
         blank=False,
+        default=1,
         related_name="question_author",
     )
     likes = models.ManyToManyField(
@@ -82,6 +83,7 @@ class Answer(models.Model):
     author = models.ForeignKey(
         User,
         blank=False,
+        default=1,
         related_name="answer_author",
     )
     
