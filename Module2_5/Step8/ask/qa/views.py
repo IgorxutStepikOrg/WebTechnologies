@@ -34,8 +34,6 @@ def index(request):
         {
             "title": "NEW QUESTIONS",
             "questions": questions,
-            "user": request.user,
-            "session": request.session,
         }
     )
 
@@ -49,8 +47,6 @@ def popular(request):
         {
             "title": "POPULAR QUESTIONS",
             "questions": questions,
-            "user": request.user,
-            "session": request.session,
         }
     )
 
@@ -66,7 +62,5 @@ def question(request, num):
         "question.html",
         {
             "question": question,
-            "user": request.user,
-            "session": request.session,
         }
     )
