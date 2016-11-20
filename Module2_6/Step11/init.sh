@@ -22,7 +22,7 @@ cp /home/box/web/Module2_6/Step11/ask/qa/forms.py /home/box/web/ask/qa/forms.py
 cp /home/box/web/Module2_6/Step11/ask/qa/models.py /home/box/web/ask/qa/models.py
 cp /home/box/web/Module2_6/Step11/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_6/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
-cp /home/box/web/Module2_6/Step11/ask/templates/base.html /home/box/web/ask/templates/base.html
+cp /home/box/web/Module2_6/Step11/ask/templates/base.html /home/box/web/ask/templates/main.html
 cp /home/box/web/Module2_6/Step11/ask/templates/list.html /home/box/web/ask/templates/list.html
 cp /home/box/web/Module2_6/Step11/ask/templates/question.html /home/box/web/ask/templates/question.html
 cp /home/box/web/Module2_6/Step11/ask/templates/ask.html /home/box/web/ask/templates/ask.html
