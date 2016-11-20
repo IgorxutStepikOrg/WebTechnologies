@@ -6,8 +6,15 @@
 
 {% block content %}
     <ul>
-    {% for question in questions %}
+    {% for question in page.object_list %}
         <li>{{ question.author_id }}:<br/><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
     {% endfor %}
     </ul>
+    <nav>
+        <ul>
+        {% for page_index in paginator.page_range %}
+            <li><a href="?page={{ page_index }}">{{ page_index }}</a></li>
+        {% endfor %}
+        </ul>
+    </nav>
 {% endblock %}
