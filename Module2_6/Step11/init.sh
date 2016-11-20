@@ -36,5 +36,12 @@ sudo ln -sf /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 cd /home/box/web/ask/
+echo >> ./ask/urls.py
+echo >> ./qa/forms.py
+echo >> ./qa/models.py
+echo >> ./qa/urls.py
+echo >> ./qa/views.py
+
+cd /home/box/web/ask/
 echo >> ./ask/settings.py
 python manage.py syncdb
