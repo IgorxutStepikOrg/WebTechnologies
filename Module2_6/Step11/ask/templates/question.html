@@ -1,28 +1,17 @@
-<!DOCTYPE html>
+{% extends "main.html" %}
 
-<html>
+{% block title %}
+    {{ question }}
+{% endblock %}
 
-    <head>
-        <meta charset="UTF-8"/>
-        <title>{{ question }}</title>
-    </head>
-
-    <body>
-        <p>User: {{ user }}</p>
-        <p>Session: {{ session }}</p>
-        <hr/>
-        <p>Title: {{ question.title }}</p>
-        <p>{{ question.author_id }}:<br/>
-            {{ question.text }}</p>
-        <hr/>
-        <ul>
-        {% for answer in question.answer_set.all %}
-            <li>{{ answer.author_id }}:<br/>
-                {{ answer.text }}</li>
-        {% endfor %}
-        </ul>
-        {{ form.as_p }}
-        {% csrf_token %}
-    </body>
-
-</html>
+{% block content %}
+    <p>Title: {{ question.title }}</p>
+    <p>{{ question.author_id }}:<br/>{{ question.text }}</p>
+    <ul>
+    {% for answer in question.answer_set.all %}
+        <li>{{ answer.author_id }}:<br/>{{ answer.text }}</li>
+    {% endfor %}
+    </ul>
+    {{ form.as_p }}
+    {% csrf_token %}
+{% endblock %}
