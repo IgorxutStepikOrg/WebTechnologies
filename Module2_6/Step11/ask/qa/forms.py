@@ -15,10 +15,7 @@ class AskForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
-        question = Question(**self.cleaned_data)
-        question.author_id = self._user.id
-        question.save()
-        return question
+        return Question.objects.create(**self.cleaned_data)
 
 
 class AnswerForm(forms.Form):
@@ -38,7 +35,4 @@ class AnswerForm(forms.Form):
         return self.cleaned_data
 
     def save(self):
-        answer = Answer(**self.cleaned_data)
-        answer.author_id = self._user.id
-        answer.save()
-        return answer
+        return Answer.objects.create(**self.cleaned_data)
