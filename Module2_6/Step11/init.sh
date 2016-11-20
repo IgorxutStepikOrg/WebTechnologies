@@ -22,14 +22,17 @@ cp /home/box/web/Module2_6/Step11/ask/qa/forms.py /home/box/web/ask/qa/forms.py
 cp /home/box/web/Module2_6/Step11/ask/qa/models.py /home/box/web/ask/qa/models.py
 cp /home/box/web/Module2_6/Step11/ask/qa/urls.py /home/box/web/ask/qa/urls.py
 cp /home/box/web/Module2_6/Step11/ask/qa/views.py /home/box/web/ask/qa/views.py
+cp /home/box/web/Module2_6/Step11/ask/templates/base.html /home/box/web/ask/templates/base.html
 cp /home/box/web/Module2_6/Step11/ask/templates/list.html /home/box/web/ask/templates/list.html
 cp /home/box/web/Module2_6/Step11/ask/templates/question.html /home/box/web/ask/templates/question.html
 cp /home/box/web/Module2_6/Step11/ask/templates/ask.html /home/box/web/ask/templates/ask.html
 
-sudo ln -sf /home/box/web/Module2_5/Step8/nginx.conf  /etc/nginx/sites-enabled/default
+cp /home/box/web/Module2_5/Step8/nginx.conf /home/box/web/etc/nginx.conf
+sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
 
-sudo ln -sf /home/box/web/Module2_5/Step8/gunicorn.conf /etc/gunicorn.d/default
+cp /home/box/web/Module2_5/Step8/gunicorn.conf /home/box/web/etc/gunicorn.conf
+sudo ln -sf /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/default
 sudo /etc/init.d/gunicorn restart
 
 cd /home/box/web/ask/
