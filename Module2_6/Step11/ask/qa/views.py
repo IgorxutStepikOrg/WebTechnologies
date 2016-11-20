@@ -1,13 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from qa.models import Question, Answer
 from qa.forms import AnswerForm, AskForm
-
-
-def test(request, *args, **kwargs):
-    return HttpResponse("OK")
 
 
 def paginate(request, obj_list):
@@ -17,55 +13,58 @@ def paginate(request, obj_list):
     )
     page = request.GET.get("page")
     try:
-        lst = paginator.page(page)
+        page = paginator.page(page)
     except PageNotAnInteger:
-        lst = paginator.page(1)
+        page = paginator.page(1)
     except EmptyPage:
-        lst = paginator.page(paginator.num_pages)
+        page = paginator.page(paginator.num_pages)
 
-    return lst
+    return paginator, page
+
+
+def test(request, *args, **kwargs):
+    return HttpResponse("OK")
 
 
 def index(request):
-    questions = paginate(request, Question.objects.new())
-
+    paginator, page = paginate(request, Question.objects.new())
     return render(
         request,
         "list.html",
         {
             "title": "NEW QUESTIONS",
-            "questions": questions,
+            "page": page,
+            "paginator": paginator,
         }
     )
 
 
 def popular(request):
-    questions = paginate(request, Question.objects.popular())
+    paginator, page = paginate(request, Question.objects.popular())
 
     return render(
         request,
         "list.html",
         {
             "title": "POPULAR QUESTIONS",
-            "questions": questions,
+            "page": page,
+            "paginator": paginator,
         }
     )
 
 
-def question(request, num):
-    try:
-        question = Question.objects.get(id=num)
-    except Question.DoesNotExist:
-        raise Http404
-
+def question(request, id):
+    question = get_object_or_404(Question, id=id)
+    answers = question.answer_set.all()
     if request.method == "GET":
-        form = AnswerForm()
+        form = AnswerForm({"question": question.id})
 
     return render(
         request,
         "question.html",
         {
             "question": question,
+            "answers": answers,
             "form": form,
         }
     )
