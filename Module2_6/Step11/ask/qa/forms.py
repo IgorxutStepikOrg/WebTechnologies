@@ -4,21 +4,44 @@ from django.contrib.auth.models import User
 from qa.models import Question, Answer
 
 
+def empty_validation(var):
+    if var is Null or var.strip() == "":
+        raise forms.ValidationError("Field is empty", code="validation_error")
+
+
 class AskForm(forms.Form):
 
-    title = forms.CharField(max_length=255)
-    text = forms.CharField(widget=forms.Textarea)
+    title = forms.CharField(max_length=255, label="заголовок вопроса")
+    text = forms.CharField(widget=forms.Textarea, label="тело вопроса")
+
+    def clean_title(self)
+        title = self.cleaned_data["title"]
+        empty_validation(title)
+        return title
+
+    def clean_text(self)
+        text = self.cleaned_data["text"]
+        empty_validation(text)
+        return text
 
     def save(self):
+        if self._user.is_anonymous():
+            self.cleaned_data["author_id"] = 1
+        else:
+            self.cleaned_data["author"] = self._user
         question = Question(**self.cleaned_data)
-        question.author_id = self._user.id
         question.save()
         return question
 
 class AnswerForm(forms.Form):
 
-    text = forms.CharField(widget=forms.Textarea)
+    text = forms.CharField(widget=forms.Textarea, label="тело ответа")
     question = forms.IntegerField(widget=forms.HiddenInput)
+
+    def clean_text(self)
+        text = self.cleaned_data["text"]
+        empty_validation(text)
+        return text
 
     def clean_question(self):
         question_id = self.cleaned_data["question"]
@@ -29,7 +52,11 @@ class AnswerForm(forms.Form):
         return question
 
     def save(self):
+        self.cleaned_data["question"] = get_object_or_404(Question, pk=self.cleaned_data["question"])
+        if self._user.is_anonymous():
+            self.cleaned_data["author_id"] = 1
+        else:
+            self.cleaned_data["author"] = self._user
         answer = Answer(**self.cleaned_data)
-        answer.author_id = self._user.id
         answer.save()
         return answer
