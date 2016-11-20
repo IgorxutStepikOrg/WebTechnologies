@@ -8,7 +8,7 @@
     <p>Title: {{ question.title }}</p>
     <p>{{ question.author_id }}:<br/>{{ question.text }}</p>
     <ul>
-    {% for answer in question.answer_set.all %}
+    {% for answer in answers %}
         <li>{{ answer.author_id }}:<br/>{{ answer.text }}</li>
     {% endfor %}
     </ul>
