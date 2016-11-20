@@ -1,22 +1,15 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html>
+{% block title %}
+    {{ title }}
+{% endblock %}
 
-    <head>
-        <meta charset="UTF-8"/>
-        <title>{{ title }}</title>
-    </head>
-
-    <body>
-        <p>User: {{ user }}</p>
-        <p>Session: {{ session }}</p>
-        <hr/>
-        <ul>
-        {% for question in questions %}
-            <li>{{ question.autor_id }}:<br/>
-                <a href="{{ question.get_url }}">{{ question.title }}</a></li>
-        {% endfor %}
-        </ul>
-    </body>
-
-</html>
+{% block content %}
+    <ul>
+    {% for question in questions %}
+        <li>{{ question.author_id }}:<br/>
+            <a href="{{ question.get_url }}">{{ question.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
